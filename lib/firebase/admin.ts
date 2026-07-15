@@ -23,5 +23,10 @@ function getAdminApp(): App {
   });
 }
 
-export const adminAuth = getAuth(getAdminApp());
-export const adminDb = getFirestore(getAdminApp());
+export function getAdminAuth() {
+  return getAuth(getAdminApp());
+}
+
+export function getAdminDb() {
+  return getFirestore(getAdminApp());
+}

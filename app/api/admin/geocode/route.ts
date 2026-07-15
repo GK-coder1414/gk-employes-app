@@ -1,15 +1,15 @@
 import { NextResponse } from "next/server";
-import { adminAuth, adminDb } from "@/lib/firebase/admin";
+import { getAdminAuth, getAdminDb } from "@/lib/firebase/admin";
 
 async function requireAdmin(request: Request) {
   const authHeader = request.headers.get("authorization") ?? "";
   const token = authHeader.startsWith("Bearer ") ? authHeader.slice(7) : null;
   if (!token) return null;
 
-  const decoded = await adminAuth.verifyIdToken(token).catch(() => null);
+  const decoded = await getAdminAuth().verifyIdToken(token).catch(() => null);
   if (!decoded) return null;
 
-  const callerDoc = await adminDb.collection("users").doc(decoded.uid).get();
+  const callerDoc = await getAdminDb().collection("users").doc(decoded.uid).get();
   if (!callerDoc.exists || callerDoc.data()?.role !== "admin") return null;
 
   return decoded;
