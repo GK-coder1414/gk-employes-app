@@ -37,7 +37,8 @@ export default function LoginPage() {
       await signInWithEmailAndPassword(auth, email.trim(), password);
     } catch (err) {
       const code = (err as { code?: string })?.code ?? "";
-      setError(ERROR_MESSAGES[code] ?? "Une erreur est survenue. Veuillez réessayer.");
+      console.error("Login error code:", code, err);
+      setError(ERROR_MESSAGES[code] ?? `Une erreur est survenue (${code}). Veuillez réessayer.`);
     } finally {
       setSubmitting(false);
     }
