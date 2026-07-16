@@ -57,11 +57,20 @@ export default function LoginPage() {
       <div className="w-full max-w-sm">
         <div className="mb-8 flex justify-center">
           <Image
-            src="/logo-horizontal.png"
+            src="/logo-horizontal-light.png"
             alt="GK Groupe inc"
             width={220}
             height={70}
             priority
+            className="dark:hidden"
+          />
+          <Image
+            src="/logo-horizontal-dark.png"
+            alt="GK Groupe inc"
+            width={220}
+            height={70}
+            priority
+            className="hidden dark:block"
           />
         </div>
 

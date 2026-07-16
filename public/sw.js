@@ -4,7 +4,8 @@ const APP_SHELL = [
   "/login",
   "/icons/icon-192.png",
   "/icons/icon-512.png",
-  "/logo-horizontal.png",
+  "/logo-horizontal-light.png",
+  "/logo-horizontal-dark.png",
 ];
 
 self.addEventListener("install", (event) => {
